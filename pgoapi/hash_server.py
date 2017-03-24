@@ -12,10 +12,10 @@ from pgoapi.exceptions import BadHashRequestException, HashingOfflineException, 
 class HashServer(HashEngine):
     _session = requests.session()
     _adapter = requests.adapters.HTTPAdapter(pool_maxsize=150, pool_block=True)
-    _session.mount('https://', _adapter)
-    _session.verify = True
+    _session.mount('http://', _adapter)
+    _session.verify = False
     _session.headers.update({'User-Agent': 'Python pgoapi @pogodev'})
-    endpoint = "https://pokehash.buddyauth.com/api/v127_4/hash"
+    endpoint = "http://pokehash.buddyauth.com/api/v127_4/hash"
     status = {}
 
     def __init__(self, auth_token):
